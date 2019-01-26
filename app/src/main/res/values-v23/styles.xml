@@ -1,0 +1,8 @@
+<resources>
+
+	<style name="Theme.AppLock.Light" parent="Base.AppLock.Light">
+		<item name="android:statusBarColor">@color/colorPrimary</item>
+		<item name="android:windowLightStatusBar">true</item>
+	</style>
+
+</resources>

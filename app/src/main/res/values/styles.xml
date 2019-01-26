@@ -24,8 +24,7 @@
 	</style>
 
 	<style name="Theme.AppLock.Light" parent="Base.AppLock.Light">
-		<item name="android:statusBarColor">@color/colorPrimary</item>
-		<item name="android:windowLightStatusBar">true</item>
+		<item name="android:statusBarColor">@color/colorSecondary</item>
 	</style>
 
 	<style name="Theme.AppLock.Dialog" parent="Base.AppLock.Dialog"/>
