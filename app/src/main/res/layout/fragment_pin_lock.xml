@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:gravity="center_horizontal"
+	android:orientation="vertical"
+	tools:context="views.fragments.PinLockFragment">
+
+	<ImageView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="24dp"
+		android:src="@drawable/lock_secondary_48dp"
+		tools:ignore="ContentDescription" />
+
+	<TextView
+		android:id="@+id/pin_lock_info"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="16dp"
+		android:layout_marginTop="8dp"
+		android:layout_marginRight="16dp"
+		android:ellipsize="end"
+		android:fontFamily="sans-serif-light"
+		android:gravity="center"
+		android:lines="2"
+		android:text="@string/fragment_pin_lock_view_title"
+		android:textSize="24sp" />
+
+	<com.andrognito.pinlockview.IndicatorDots
+		android:id="@+id/indicator_dots"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="36dp"
+		android:minHeight="8dp" />
+
+	<com.andrognito.pinlockview.PinLockView
+		android:id="@+id/pin_lock_view"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="32dp"
+		app:keypadButtonSize="72dp"
+		app:keypadShowDeleteButton="true"
+		app:keypadTextColor="@color/white"
+		app:keypadTextSize="18dp" />
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_marginBottom="16dp"
+		android:gravity="bottom|center_horizontal"
+		android:orientation="vertical"
+		tools:ignore="UseCompoundDrawables">
+
+		<ImageView
+			android:id="@+id/fingerprint_icon"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="8dp"
+			android:src="@drawable/fingerprint_grey_32dp"
+			tools:ignore="ContentDescription" />
+
+		<TextView
+			android:id="@+id/fingerprint_hint"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:fontFamily="sans-serif-light"
+			android:gravity="center"
+			android:text="@string/fragment_pattern_view_fingerprint"
+			android:textSize="20sp" />
+
+	</LinearLayout>
+
+</LinearLayout>

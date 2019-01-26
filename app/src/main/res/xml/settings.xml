@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<PreferenceCategory android:title="@string/settings_header_security">
+
+		<ListPreference
+			android:enabled="true"
+			android:entries="@array/lock_type_entries"
+			android:entryValues="@array/lock_type_values"
+			android:icon="@drawable/lock_outline_grey_24dp"
+			android:key="settings_lock_type"
+			android:summary="@string/settings_lock_type_summary"
+			android:title="@string/settings_lock_type_title"/>
+
+		<SwitchPreference
+			android:enabled="true"
+			android:icon="@drawable/shield_on_grey_24dp"
+			android:key="settings_admin"
+			android:selectable="true"
+			android:summary="@string/settings_admin_summary"
+			android:title="@string/settings_admin_title"/>
+
+	</PreferenceCategory>
+
+	<PreferenceCategory android:title="@string/settings_header_about">
+
+		<Preference
+			android:enabled="true"
+			android:icon="@drawable/info_grey_24dp"
+			android:key="settings_app_info"
+			android:selectable="true"
+			android:summary="@string/settings_app_info_summary"
+			android:title="@string/settings_app_info_title"/>
+
+		<Preference
+			android:enabled="true"
+			android:icon="@drawable/email_grey_24dp"
+			android:key="settings_contact"
+			android:selectable="true"
+			android:summary="@string/settings_contact_summary"
+			android:title="@string/settings_contact_title"/>
+
+		<Preference
+			android:enabled="true"
+			android:icon="@drawable/smartphone_grey_24dp"
+			android:key="settings_version"
+			android:selectable="true"
+			android:title="@string/settings_app_version"/>
+
+	</PreferenceCategory>
+
+</PreferenceScreen>

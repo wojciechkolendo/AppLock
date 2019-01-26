@@ -1,0 +1,33 @@
+<resources>
+
+	<style name="Base"/>
+
+	<style name="Base.AppLock"/>
+
+	<style name="Base.AppLock.Light" parent="Theme.MaterialComponents.Light.NoActionBar">
+		<item name="colorPrimary">@color/colorPrimary</item>
+		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+		<item name="colorSecondary">@color/colorSecondary</item>
+
+		<item name="android:colorBackground">@color/white</item>
+		<item name="colorControlHighlight">@color/colorRipple</item>
+		<item name="android:windowContentTransitions">true</item>
+	</style>
+
+	<style name="Base.AppLock.Dialog" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+		<item name="colorPrimary">@color/colorPrimary</item>
+		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+		<item name="colorSecondary">@color/colorSecondary</item>
+
+		<item name="colorControlHighlight">@color/colorRipple</item>
+		<item name="android:windowSoftInputMode">adjustResize|stateHidden</item>
+	</style>
+
+	<style name="Theme.AppLock.Light" parent="Base.AppLock.Light">
+		<item name="android:statusBarColor">@color/colorPrimary</item>
+		<item name="android:windowLightStatusBar">true</item>
+	</style>
+
+	<style name="Theme.AppLock.Dialog" parent="Base.AppLock.Dialog"/>
+
+</resources>

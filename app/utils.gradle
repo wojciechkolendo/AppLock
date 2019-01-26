@@ -1,0 +1,107 @@
+import java.util.regex.Matcher
+import java.util.regex.Pattern
+
+def copyApk(apkName) {
+	android.applicationVariants.all { variant ->
+		variant.assemble.doLast {
+			variant.outputs.each { output ->
+				File outputFile = output.outputFile
+
+				println(outputFile.getAbsolutePath() + " -> " + apkName + " " + outputFile.exists())
+				if (outputFile.exists()) {
+					try {
+						File file = new File(outputFile.getParent(), apkName)
+						copy {
+							from outputFile.getAbsolutePath()
+							into file.getParent()
+							rename { String fileName ->
+								fileName.replace(fileName, apkName)
+							}
+						}
+						logger.error('App: ' + file.getAbsolutePath())
+					} catch (Exception ignored) {
+					}
+				}
+			}
+		}
+	}
+}
+
+def getCurrentFlavor() {
+	String name = getCurrentFlavorName()
+	if (name.length() > 0) {
+		try {
+			return android.productFlavors.getByName(name)
+		} catch (Exception e) {
+
+		}
+	}
+	return null
+}
+
+def getCurrentFlavorName() {
+	String tskReqStr = getGradle().getStartParameter().getTaskRequests().toString()
+	Pattern pattern
+	if (tskReqStr.contains("assemble"))
+		pattern = Pattern.compile("assemble(\\w+)(Release|Debug)")
+	else
+		pattern = Pattern.compile("generate(\\w+)(Release|Debug)")
+
+	Matcher matcher = pattern.matcher(tskReqStr)
+
+	if (matcher.find()) {
+		String flavor = matcher.group(1);
+		return flavor.replaceFirst(flavor.substring(0, 1), flavor.substring(0, 1).toLowerCase())
+	} else {
+		return ""
+	}
+}
+
+def getCurrentBuildType() {
+	String name = getCurrentBuildTypeName()
+	if (name.length() > 0) {
+		try {
+			return android.buildTypes.getByName(name);
+		} catch (Exception e) {
+
+		}
+	}
+	return null
+}
+
+def getCurrentBuildTypeName() {
+	String tskReqStr = getGradle().getStartParameter().getTaskRequests().toString()
+	Pattern pattern
+	if (tskReqStr.contains("assemble"))
+		pattern = Pattern.compile("assemble(\\w+)(Release|Debug)(\\w*)")
+	else
+		pattern = Pattern.compile("generate(\\w+)(Release|Debug)(\\w*)Sources")
+
+	Matcher matcher = pattern.matcher(tskReqStr)
+
+	if (matcher.find()) {
+		String type = matcher.group(2) + matcher.group(3)
+		return type.replaceFirst(type.substring(0, 1), type.substring(0, 1).toLowerCase())
+	} else {
+		return ""
+	}
+}
+
+def manageApk() {
+	copyApk(String.format("[%d][%s]AppLock.apk", android.defaultConfig.versionCode, android.defaultConfig.versionName))
+}
+
+def readLocalProperties() {
+	Properties properties = new Properties()
+	properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+	project.ext.set("KEYSTORE_DIR", properties.getProperty('KEYSTORE_DIR'))
+	project.ext.set("KEYSTORE_PASSWORD", properties.getProperty('KEYSTORE_PASSWORD'))
+	project.ext.set("ALIAS", properties.getProperty('ALIAS'))
+	project.ext.set("KEY_PASSWORD", properties.getProperty('KEY_PASSWORD'))
+}
+
+ext {
+	manageApk = this.&manageApk
+	readLocalProperties = this.&readLocalProperties
+}

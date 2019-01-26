@@ -1,0 +1,99 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+		  xmlns:tools="http://schemas.android.com/tools"
+		  package="com.wojciechkolendo.applock">
+
+	<uses-permission
+		android:name="android.permission.BIND_DEVICE_ADMIN"
+		tools:ignore="ProtectedPermissions"/>
+	<uses-permission
+		android:name="android.permission.PACKAGE_USAGE_STATS"
+		tools:ignore="ProtectedPermissions"/>
+	<uses-permission android:name="android.permission.USE_FINGERPRINT"/>
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+	<uses-permission android:name="android.permission.VIBRATE"/>
+	<uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+
+	<application
+		android:name=".AppLockApplication"
+		android:allowBackup="true"
+		android:fullBackupContent="true"
+		android:icon="@mipmap/ic_launcher"
+		android:label="@string/app_name"
+		android:roundIcon="@mipmap/ic_launcher_round"
+		android:supportsRtl="true"
+		android:theme="@style/Theme.AppLock.Light"
+		tools:ignore="GoogleAppIndexingWarning">
+
+		<activity
+			android:name=".views.activities.AppListActivity"
+			android:excludeFromRecents="true"
+			android:exported="false"
+			android:label=""
+			android:screenOrientation="portrait"/>
+
+		<activity
+			android:name=".views.activities.LockAppActivity"
+			android:excludeFromRecents="true"
+			android:launchMode="singleInstance"
+			android:noHistory="true"
+			android:screenOrientation="portrait">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN"/>
+				<category android:name="android.intent.category.LAUNCHER"/>
+			</intent-filter>
+		</activity>
+
+		<activity
+			android:name=".views.activities.EnrollPatternActivity"
+			android:excludeFromRecents="true"
+			android:exported="false"
+			android:screenOrientation="portrait"/>
+
+		<activity
+			android:name=".views.activities.EnrollPinActivity"
+			android:excludeFromRecents="true"
+			android:exported="false"
+			android:screenOrientation="portrait"/>
+
+		<activity
+			android:name=".views.activities.SettingsActivity"
+			android:excludeFromRecents="true"
+			android:exported="false"
+			android:label=""
+			android:screenOrientation="portrait"/>
+
+		<service
+			android:name=".services.LockingAppService"
+			android:enabled="true"
+			android:exported="false"/>
+
+		<receiver android:name=".receivers.OnBootCompletedReceiver">
+			<intent-filter>
+				<action android:name="android.intent.action.BOOT_COMPLETED"/>
+
+				<category android:name="android.intent.category.DEFAULT"/>
+			</intent-filter>
+		</receiver>
+
+		<receiver android:name=".receivers.OnUserPresentReceiver">
+			<intent-filter>
+				<action android:name="android.intent.action.USER_PRESENT"/>
+			</intent-filter>
+		</receiver>
+
+		<receiver
+			android:name=".receivers.OnDeviceAdminReceiver"
+			android:description="@string/settings_admin_explanation"
+			android:label="@string/app_name"
+			android:permission="android.permission.BIND_DEVICE_ADMIN">
+			<meta-data
+				android:name="android.app.device_admin"
+				android:resource="@xml/security_policies"/>
+			<intent-filter>
+				<action android:name="android.app.action.DEVICE_ADMIN_ENABLED"/>
+			</intent-filter>
+		</receiver>
+
+	</application>
+
+</manifest>

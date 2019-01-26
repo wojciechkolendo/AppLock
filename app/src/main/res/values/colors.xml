@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="colorPrimary">@color/white</color>
+	<color name="colorPrimaryLight">@color/white</color>
+	<color name="colorPrimaryDark">@color/white</color>
+
+	<color name="colorSecondary">#4285F4</color>
+	<color name="colorSecondaryLight">#4285F4</color>
+	<color name="colorSecondaryDark">@color/colorSecondary</color>
+
+	<color name="colorRipple">#424285F4</color>
+
+</resources>

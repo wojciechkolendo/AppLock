@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<style name="Base.AppLock.Widget" />
+
+	<style name="ThemeOverlay.AppLock.Toolbar" parent="ThemeOverlay.MaterialComponents.ActionBar">
+		<item name="colorControlNormal">@color/white</item>
+	</style>
+
+	<style name="ThemeOverlay.AppLock.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.ActionBar" />
+
+	<style name="ThemeOverlay.AppLock.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
+
+</resources>

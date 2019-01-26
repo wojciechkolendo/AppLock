@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:gravity="center_horizontal"
+	android:orientation="vertical"
+	tools:context=".views.activities.EnrollPatternActivity">
+
+	<ImageView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="24dp"
+		android:src="@drawable/lock_secondary_48dp"
+		tools:ignore="ContentDescription" />
+
+	<TextView
+		android:id="@+id/enroll_info"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="16dp"
+		android:layout_marginTop="8dp"
+		android:layout_marginRight="16dp"
+		android:ellipsize="end"
+		android:fontFamily="sans-serif-light"
+		android:gravity="center"
+		android:lines="2"
+		android:text="@string/pattern_lock_enroll_step1_info"
+		android:textSize="24sp" />
+
+	<com.wojciechkolendo.applock.views.custom.Lock9View
+		android:id="@+id/patternView"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center"
+		android:layout_marginLeft="48dp"
+		android:layout_marginTop="16dp"
+		android:layout_marginRight="48dp"
+		app:lock9_autoLink="false"
+		app:lock9_enableVibrate="true"
+		app:lock9_lineColor="@color/colorSecondary"
+		app:lock9_lineWidth="4dp"
+		app:lock9_nodeAreaExpand="24dp"
+		app:lock9_nodeOnAnim="@anim/node_on_scale"
+		app:lock9_nodeOnSrc="@drawable/circle_shape_secondary_16dp"
+		app:lock9_nodeSize="16dp"
+		app:lock9_nodeSrc="@drawable/circle_shape_grey_16dp"
+		app:lock9_vibrateTime="20" />
+
+	<com.google.android.material.button.MaterialButton
+		android:id="@+id/btn_cancel"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="32dp"
+		android:paddingLeft="24dp"
+		android:paddingTop="8dp"
+		android:paddingRight="24dp"
+		android:paddingBottom="8dp"
+		android:text="@string/lock_enroll_btn_cancel" />
+
+</LinearLayout>
